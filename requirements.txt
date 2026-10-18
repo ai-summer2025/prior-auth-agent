@@ -1,3 +1,0 @@
-# All dependencies are Python standard library only.
-# No third-party packages required.
-# Python >= 3.9
