@@ -1,0 +1,19 @@
+{
+ "N01": {"service_code": "72148", "diagnosis_codes": ["M54.42"],
+         "facts": {"red_flags": ["history_of_cancer"], "symptom_duration_weeks": 10, "conservative_therapy_weeks": 8,
+                   "surgery_or_intervention_candidate": true},
+         "expected": "meets_criteria"},
+ "N02": {"service_code": "72148", "diagnosis_codes": ["M54.50"],
+         "facts": {"symptom_duration_weeks": 2},
+         "expected": "missing_information",
+         "notes": "Red flags explicitly negated but no conservative-care or candidacy facts: cannot be approved yet."},
+ "N03": {"service_code": "95810", "diagnosis_codes": ["G47.33"],
+         "facts": {"suspected_osa": true, "hsat_limiting_comorbidities": ["significant_cardiorespiratory_disease", "chronic_opioid_use"]},
+         "expected": "meets_criteria"},
+ "N04": {"service_code": "RX-GLP1RA", "diagnosis_codes": ["E11.65"],
+         "facts": {"hba1c": 8.1, "metformin_trial_months": 9, "ascvd_hf_or_ckd": false},
+         "expected": "meets_criteria"},
+ "N05": {"service_code": "70553", "diagnosis_codes": ["R51.9"],
+         "facts": {"headache_red_flags": ["new_headache_age_over_50", "papilledema", "positional_or_valsalva_triggered"]},
+         "expected": "meets_criteria"}
+}
