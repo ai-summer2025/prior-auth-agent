@@ -1,0 +1,11 @@
+{
+ "id": "Q11",
+ "service_code": "RX-GLP1RA",
+ "diagnosis_codes": [
+  "E11.65"
+ ],
+ "facts": {
+  "hba1c": 8.4,
+  "metformin_trial_months": 6
+ }
+}
