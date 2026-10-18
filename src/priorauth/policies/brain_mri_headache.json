@@ -1,0 +1,14 @@
+{
+ "id": "brain-mri-headache",
+ "title": "MRI brain for headache",
+ "service_codes": ["70551", "70552", "70553"],
+ "diagnosis_prefixes": ["R51", "G43", "G44"],
+ "basis": "ACR Appropriateness Criteria: Headache (American College of Radiology)",
+ "facts": {
+   "headache_red_flags": {"type": "list", "values": ["new_headache_age_over_50", "thunderclap_onset", "focal_neurologic_deficit", "papilledema", "immunocompromised", "history_of_cancer", "positional_or_valsalva_triggered", "progressive_or_changed_pattern"], "description": "Red-flag features of the headache"}
+ },
+ "pathways": [
+   {"name": "Headache with red-flag features", "conditions": [{"fact": "headache_red_flags", "op": "any_in", "value": ["new_headache_age_over_50", "thunderclap_onset", "focal_neurologic_deficit", "papilledema", "immunocompromised", "history_of_cancer", "positional_or_valsalva_triggered", "progressive_or_changed_pattern"]}]}
+ ],
+ "documentation": ["Clinical note with headache history and neurologic exam"]
+}

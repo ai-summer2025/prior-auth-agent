@@ -1,0 +1,22 @@
+{
+ "id": "glp1-ra-type2-diabetes",
+ "title": "GLP-1 receptor agonist for type 2 diabetes (illustrative step therapy)",
+ "service_codes": ["RX-GLP1RA"],
+ "diagnosis_prefixes": ["E11"],
+ "basis": "Illustrative step-therapy design informed by the ADA Standards of Care in Diabetes, Section 9 (Pharmacologic Approaches to Glycemic Treatment)",
+ "facts": {
+   "hba1c": {"type": "number", "description": "Most recent HbA1c, %"},
+   "metformin_trial_months": {"type": "number", "description": "Months of metformin treatment at a therapeutic dose"},
+   "metformin_contraindicated_or_intolerant": {"type": "bool", "description": "Metformin contraindicated (e.g. eGFR < 30) or not tolerated"},
+   "ascvd_hf_or_ckd": {"type": "bool", "description": "Established atherosclerotic cardiovascular disease, heart failure or chronic kidney disease"}
+ },
+ "pathways": [
+   {"name": "Above target after an adequate metformin trial", "conditions": [
+     {"fact": "hba1c", "op": ">=", "value": 7.0}, {"fact": "metformin_trial_months", "op": ">=", "value": 3}]},
+   {"name": "Above target with metformin contraindicated or not tolerated", "conditions": [
+     {"fact": "hba1c", "op": ">=", "value": 7.0}, {"fact": "metformin_contraindicated_or_intolerant", "op": "==", "value": true}]},
+   {"name": "Established ASCVD, heart failure or CKD (independent of HbA1c)", "conditions": [
+     {"fact": "ascvd_hf_or_ckd", "op": "==", "value": true}]}
+ ],
+ "documentation": ["Recent HbA1c result", "Medication history showing metformin use or the reason it is not used"]
+}

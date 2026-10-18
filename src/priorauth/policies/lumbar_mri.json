@@ -1,0 +1,21 @@
+{
+ "id": "lumbar-spine-mri",
+ "title": "MRI lumbar spine for low back pain",
+ "service_codes": ["72148", "72149", "72158"],
+ "diagnosis_prefixes": ["M54.4", "M54.5", "M51", "M48.0", "M46", "G83.4", "C79.5"],
+ "basis": "ACR Appropriateness Criteria: Low Back Pain (American College of Radiology)",
+ "facts": {
+   "red_flags": {"type": "list", "values": ["suspected_cauda_equina", "progressive_neurologic_deficit", "history_of_cancer", "suspected_infection", "suspected_fracture"], "description": "Red-flag findings documented in the note"},
+   "symptom_duration_weeks": {"type": "number", "description": "How long the current episode of low back pain has lasted, in weeks"},
+   "conservative_therapy_weeks": {"type": "number", "description": "Weeks of documented conservative treatment (physical therapy, NSAIDs, activity modification)"},
+   "surgery_or_intervention_candidate": {"type": "bool", "description": "Patient is being considered for surgery or an interventional procedure"}
+ },
+ "pathways": [
+   {"name": "Red-flag findings", "conditions": [{"fact": "red_flags", "op": "any_in", "value": ["suspected_cauda_equina", "progressive_neurologic_deficit", "history_of_cancer", "suspected_infection", "suspected_fracture"]}]},
+   {"name": "Persistent symptoms after conservative care in a surgical or interventional candidate", "conditions": [
+     {"fact": "symptom_duration_weeks", "op": ">=", "value": 6},
+     {"fact": "conservative_therapy_weeks", "op": ">=", "value": 6},
+     {"fact": "surgery_or_intervention_candidate", "op": "==", "value": true}]}
+ ],
+ "documentation": ["Clinical note with history and neurologic exam", "Record of conservative therapy (dates, modality)"]
+}
