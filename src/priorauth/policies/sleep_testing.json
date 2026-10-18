@@ -1,0 +1,42 @@
+[
+{
+ "id": "in-lab-polysomnography",
+ "title": "Attended in-laboratory polysomnography",
+ "service_codes": ["95810", "95811"],
+ "diagnosis_prefixes": ["G47.3", "R06.83", "R40.0"],
+ "basis": "Kapur VK, et al. Clinical practice guideline for diagnostic testing for adult obstructive sleep apnea. J Clin Sleep Med. 2017;13(3):479-504 (AASM)",
+ "facts": {
+   "suspected_osa": {"type": "bool", "description": "Clinician suspects obstructive sleep apnea"},
+   "hsat_limiting_comorbidities": {"type": "list", "values": ["significant_cardiorespiratory_disease", "neuromuscular_weakness", "awake_hypoventilation", "chronic_opioid_use", "history_of_stroke", "severe_insomnia"], "description": "Conditions that make home testing unsuitable"},
+   "prior_hsat_negative_or_inconclusive": {"type": "bool", "description": "A home sleep apnea test was negative, inconclusive or technically inadequate"}
+ },
+ "pathways": [
+   {"name": "Comorbidity that makes home testing unsuitable", "conditions": [
+     {"fact": "suspected_osa", "op": "==", "value": true},
+     {"fact": "hsat_limiting_comorbidities", "op": "any_in", "value": ["significant_cardiorespiratory_disease", "neuromuscular_weakness", "awake_hypoventilation", "chronic_opioid_use", "history_of_stroke", "severe_insomnia"]}]},
+   {"name": "Home test negative or inconclusive despite suspicion", "conditions": [
+     {"fact": "suspected_osa", "op": "==", "value": true},
+     {"fact": "prior_hsat_negative_or_inconclusive", "op": "==", "value": true}]}
+ ],
+ "documentation": ["Sleep evaluation note", "Prior home sleep test report, if any"]
+},
+{
+ "id": "home-sleep-apnea-test",
+ "title": "Home sleep apnea test",
+ "service_codes": ["95806", "G0399"],
+ "diagnosis_prefixes": ["G47.3", "R06.83", "R40.0"],
+ "basis": "Kapur VK, et al. Clinical practice guideline for diagnostic testing for adult obstructive sleep apnea. J Clin Sleep Med. 2017;13(3):479-504 (AASM)",
+ "facts": {
+   "suspected_osa": {"type": "bool", "description": "Clinician suspects obstructive sleep apnea"},
+   "increased_risk_moderate_severe_osa": {"type": "bool", "description": "Signs and symptoms indicate increased risk of moderate to severe OSA (e.g. excessive daytime sleepiness plus two of: loud snoring, witnessed apneas or gasping, hypertension)"},
+   "hsat_limiting_comorbidities": {"type": "list", "values": ["significant_cardiorespiratory_disease", "neuromuscular_weakness", "awake_hypoventilation", "chronic_opioid_use", "history_of_stroke", "severe_insomnia"], "description": "Conditions that make home testing unsuitable"}
+ },
+ "pathways": [
+   {"name": "Uncomplicated adult with increased risk of moderate-severe OSA", "conditions": [
+     {"fact": "suspected_osa", "op": "==", "value": true},
+     {"fact": "increased_risk_moderate_severe_osa", "op": "==", "value": true},
+     {"fact": "hsat_limiting_comorbidities", "op": "none_in", "value": ["significant_cardiorespiratory_disease", "neuromuscular_weakness", "awake_hypoventilation", "chronic_opioid_use", "history_of_stroke", "severe_insomnia"]}]}
+ ],
+ "documentation": ["Sleep evaluation note"]
+}
+]
