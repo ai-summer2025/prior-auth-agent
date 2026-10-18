@@ -1,0 +1,12 @@
+{
+ "id": "Q01",
+ "service_code": "72148",
+ "diagnosis_codes": [
+  "M54.50"
+ ],
+ "facts": {
+  "red_flags": [
+   "history_of_cancer"
+  ]
+ }
+}

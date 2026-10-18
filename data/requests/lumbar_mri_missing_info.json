@@ -1,0 +1,12 @@
+{
+ "id": "Q03",
+ "service_code": "72148",
+ "diagnosis_codes": [
+  "M54.41"
+ ],
+ "facts": {
+  "red_flags": [],
+  "symptom_duration_weeks": 10,
+  "conservative_therapy_weeks": 8
+ }
+}
